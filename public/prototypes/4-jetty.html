@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLAWBSTER — The AI Builder Collective</title>
+  <meta name="description" content="Clawbster is an AI builder collective that meets in real life. Share your agentic journey, level up together.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       DESIGN TOKENS
+       ======================================== */
+    :root {
+      --bg: #F2F0EB;
+      --red: #C1121F;
+      --orange: #F4A261;
+      --ink: #3D3A35;
+      --black: #1A1714;
+      /* mascot colors kept for reference if needed */
+      --muted: #8A857D;
+      --rule-color: #3D3A35;
+      --hover-orange: rgba(244, 162, 97, 0.12);
+      --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+      --font-body: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ========================================
+       LAYOUT
+       ======================================== */
+    .page-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ========================================
+       DOUBLE-RULE DIVIDER
+       ======================================== */
+    .double-rule {
+      border: none;
+      border-top: 3px double var(--rule-color);
+      margin: 0;
+    }
+
+    /* ========================================
+       MASTHEAD / NAV
+       ======================================== */
+    .masthead {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1.75rem 0 1.25rem;
+    }
+
+    .masthead-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--black);
+      letter-spacing: 0.08em;
+      font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-logo-img {
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .masthead-link {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .masthead-link:hover,
+    .masthead-link:focus-visible {
+      color: var(--red);
+    }
+
+    .masthead-link:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    /* ========================================
+       HERO SECTION
+       ======================================== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 3.5rem 0 3rem;
+      align-items: end;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      line-height: 0.92;
+      color: var(--black);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: var(--ink);
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+
+    .hero-cta {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 4px;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .hero-cta:hover,
+    .hero-cta:focus-visible {
+      color: var(--red);
+      text-decoration-color: var(--red);
+    }
+
+    .hero-cta:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    /* Hero right: mascot area */
+    .hero-mascot-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .mascot-shelf {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mascot-container {
+      animation: bounce-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      opacity: 0;
+    }
+
+    .shelf-line {
+      width: 280px;
+      height: 0;
+      border-top: 1px solid var(--ink);
+      margin-top: -2px;
+    }
+
+    .mascot-date {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+      letter-spacing: 0.03em;
+    }
+
+    @keyframes bounce-in {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(4px);
+      }
+      70% {
+        transform: translateY(-2px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========================================
+       MASCOT IMAGE
+       ======================================== */
+    .mascot-img {
+      width: 260px;
+      height: 260px;
+      image-rendering: auto;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.1));
+      animation: mascot-bob 3s ease-in-out infinite;
+      display: block;
+    }
+
+    @keyframes mascot-bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ========================================
+       ABOUT SECTION — NEWSPAPER COLUMNS
+       ======================================== */
+    .about {
+      padding: 3rem 0;
+    }
+
+    .about-columns {
+      column-count: 3;
+      column-gap: 2.5rem;
+      column-rule: 1px solid rgba(61, 58, 53, 0.2);
+      font-family: var(--font-body);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    .about-columns p {
+      margin-bottom: 1em;
+      break-inside: avoid;
+    }
+
+    /* Drop cap */
+    .about-columns p:first-of-type::first-letter {
+      font-family: var(--font-display);
+      float: left;
+      font-size: 4rem;
+      line-height: 0.8;
+      padding-right: 0.12em;
+      padding-top: 0.08em;
+      color: var(--red);
+      font-weight: 400;
+    }
+
+    /* ========================================
+       LOOP SECTION — 4-COLUMN RULED GRID
+       ======================================== */
+    .loop {
+      padding: 3rem 0;
+    }
+
+    .loop-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--ink);
+    }
+
+    .loop-cell {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--ink);
+      transition: background-color 0.25s ease;
+    }
+
+    .loop-cell:last-child {
+      border-right: none;
+    }
+
+    .loop-cell:hover {
+      background-color: var(--hover-orange);
+    }
+
+    .loop-number {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+
+    .loop-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
+
+    .loop-desc {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1.5rem 0 2rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ========================================
+       SECTION FADE-IN ANIMATION
+       ======================================== */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fade-up 0.6s ease forwards;
+    }
+
+    .fade-section:nth-child(1) { animation-delay: 0s; }
+    .fade-section:nth-child(2) { animation-delay: 0.08s; }
+    .fade-section:nth-child(3) { animation-delay: 0.16s; }
+    .fade-section:nth-child(4) { animation-delay: 0.24s; }
+    .fade-section:nth-child(5) { animation-delay: 0.32s; }
+    .fade-section:nth-child(6) { animation-delay: 0.40s; }
+    .fade-section:nth-child(7) { animation-delay: 0.48s; }
+    .fade-section:nth-child(8) { animation-delay: 0.56s; }
+    .fade-section:nth-child(9) { animation-delay: 0.64s; }
+
+    @keyframes fade-up {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========================================
+       REDUCED MOTION
+       ======================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-section {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .mascot-container {
+        opacity: 1;
+        animation: none;
+      }
+
+      .mascot-img {
+        animation: none;
+      }
+    }
+
+    /* ========================================
+       RESPONSIVE — TABLET
+       ======================================== */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-mascot-area {
+        order: -1;
+      }
+
+      .hero-headline {
+        font-size: clamp(3rem, 10vw, 4.5rem);
+      }
+
+      .about-columns {
+        column-count: 2;
+      }
+
+      .loop-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .loop-cell:nth-child(2) {
+        border-right: none;
+      }
+
+      .loop-cell:nth-child(1),
+      .loop-cell:nth-child(2) {
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .loop-cell:nth-child(3) {
+        border-right: 1px solid var(--ink);
+      }
+    }
+
+    /* ========================================
+       RESPONSIVE — MOBILE
+       ======================================== */
+    @media (max-width: 600px) {
+      .page-wrap {
+        padding: 0 1.25rem;
+      }
+
+      .hero {
+        padding: 2.5rem 0 2rem;
+      }
+
+      .hero-headline {
+        font-size: clamp(2.5rem, 12vw, 3.5rem);
+      }
+
+      .about-columns {
+        column-count: 1;
+      }
+
+      .loop-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .loop-cell {
+        border-right: none;
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .loop-cell:last-child {
+        border-bottom: none;
+      }
+
+      .mascot-img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .shelf-line {
+        width: 220px;
+      }
+    }
+
+    /* ========================================
+       FOCUS STYLES
+       ======================================== */
+    :focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--black);
+      color: var(--bg);
+      padding: 0.5rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      z-index: 100;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip navigation for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page-wrap">
+    <!-- ====== MASTHEAD / NAV ====== -->
+    <header class="masthead fade-section" role="banner">
+      <span class="masthead-title" aria-label="Clawbster"><img src="../img/clawbster-mascot.png" alt="" class="nav-logo-img" aria-hidden="true">CLAWBSTER</span>
+      <a href="https://lu.ma/clawbster" class="masthead-link" aria-label="View events on Luma">&rarr; Luma</a>
+    </header>
+
+    <!-- Divider -->
+    <hr class="double-rule fade-section" aria-hidden="true">
+
+    <!-- ====== HERO ====== -->
+    <main id="main-content">
+      <section class="hero fade-section" aria-label="Introduction">
+        <div class="hero-text">
+          <h1 class="hero-headline">CLAWBSTER</h1>
+          <p class="hero-sub">The AI builder collective that meets in real life.</p>
+          <a href="https://lu.ma/clawbster" class="hero-cta" aria-label="Join the Colony on Luma">Join the Colony &rarr;</a>
+        </div>
+
+        <div class="hero-mascot-area">
+          <div class="mascot-shelf">
+            <div class="mascot-container">
+              <img src="../img/clawbster-mascot.png" alt="Clawbster mascot" class="mascot-img" aria-label="Clawbster mascot — a cute pixel art crab">
+            </div>
+            <div class="shelf-line" aria-hidden="true"></div>
+            <p class="mascot-date">Next meetup: Apr 12</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <hr class="double-rule fade-section" aria-hidden="true">
+
+      <!-- ====== ABOUT SECTION ====== -->
+      <section class="about fade-section" aria-label="About the collective">
+        <div class="about-columns">
+          <p>A collective of builders who meet in real life. We are not a Discord server. We are not a Slack channel. We are people who believe the most important conversations about AI happen face-to-face, around tables, with screens open and ideas flowing freely between minds that refuse to build alone.</p>
+          <p>We sit at tables, show our screens, and share what actually works. No pitch decks. No networking cards. Just builders who show up with something they made, something they broke, or something they cannot figure out alone. Every meetup is a working session where real knowledge transfers happen.</p>
+          <p>We teach each other what works with AI. The gap between reading about agents and building them is enormous. We close that gap together. Members bring their agentic workflows, their automation pipelines, their hard-won lessons from deploying AI in production, and we all leave sharper than we arrived.</p>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <hr class="double-rule fade-section" aria-hidden="true">
+
+      <!-- ====== LOOP SECTION ====== -->
+      <section class="loop fade-section" aria-label="The Clawbster loop">
+        <div class="loop-grid" role="list">
+          <div class="loop-cell" role="listitem">
+            <p class="loop-number">01</p>
+            <h2 class="loop-title">BUILD</h2>
+            <p class="loop-desc">Push limits daily.</p>
+          </div>
+          <div class="loop-cell" role="listitem">
+            <p class="loop-number">02</p>
+            <h2 class="loop-title">MEET</h2>
+            <p class="loop-desc">Show up. Show work.</p>
+          </div>
+          <div class="loop-cell" role="listitem">
+            <p class="loop-number">03</p>
+            <h2 class="loop-title">SHARE</h2>
+            <p class="loop-desc">Trade wins.</p>
+          </div>
+          <div class="loop-cell" role="listitem">
+            <p class="loop-number">04</p>
+            <h2 class="loop-title">LEVEL UP</h2>
+            <p class="loop-desc">Come back stronger.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <hr class="double-rule fade-section" aria-hidden="true">
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer fade-section" role="contentinfo">
+      <span class="footer-brand">clawbst.er</span>
+      <span class="footer-copy">&copy; 2026</span>
+    </footer>
+  </div>
+
+  <!-- No external JS needed. All animations are CSS-based. -->
+</body>
+</html>

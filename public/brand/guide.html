@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clawbster Brand Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #F8F7F4;
+  color: #1A1A1A;
+  line-height: 1.6;
+  padding: 64px 24px;
+}
+
+.wrap {
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+/* Header */
+.brand-header {
+  margin-bottom: 64px;
+}
+.brand-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.brand-header p {
+  color: #7A746B;
+  font-size: 1rem;
+}
+
+/* Section */
+section {
+  margin-bottom: 56px;
+}
+section h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(122, 116, 107, 0.2);
+}
+
+/* Colors */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+.color-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+}
+.color-swatch {
+  height: 100px;
+}
+.color-info {
+  padding: 14px 16px;
+}
+.color-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 4px;
+}
+.color-hex {
+  font-size: 0.8rem;
+  color: #7A746B;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  letter-spacing: 0.02em;
+}
+.color-use {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 4px;
+}
+
+/* Typography */
+.type-specimen {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 16px;
+}
+.type-specimen .sample {
+  margin-bottom: 16px;
+}
+.type-specimen .sample-heading {
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.type-specimen .sample-body {
+  font-family: 'Inter', sans-serif;
+}
+.type-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.type-meta dt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7A746B;
+  margin-bottom: 2px;
+}
+.type-meta dd {
+  font-size: 0.85rem;
+}
+
+/* Mascot */
+.mascot-section {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.mascot-preview {
+  flex-shrink: 0;
+  width: 240px;
+  height: 240px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mascot-preview img {
+  width: 200px;
+  height: 200px;
+}
+.mascot-preview-dark {
+  background: #1A1A1A;
+}
+.mascot-details {
+  flex: 1;
+  min-width: 240px;
+}
+.mascot-details h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.mascot-details ul {
+  list-style: none;
+  font-size: 0.9rem;
+  color: #444;
+}
+.mascot-details li {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.mascot-details li:last-child {
+  border-bottom: none;
+}
+.mascot-details li strong {
+  color: #1A1A1A;
+}
+
+/* Spacing scale */
+.spacing-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.spacing-bar {
+  height: 24px;
+  background: #E63946;
+  border-radius: 4px;
+  opacity: 0.7;
+}
+.spacing-label {
+  font-size: 0.8rem;
+  color: #7A746B;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  min-width: 60px;
+}
+
+/* Assets */
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.asset-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.asset-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 12px;
+}
+.asset-card .asset-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.asset-card .asset-size {
+  font-size: 0.7rem;
+  color: #7A746B;
+}
+
+/* Usage notes */
+.usage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .usage-grid { grid-template-columns: 1fr; }
+  .mascot-section { flex-direction: column; }
+}
+.usage-do, .usage-dont {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.usage-do h3 {
+  color: #2A9D8F;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+.usage-dont h3 {
+  color: #E63946;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+.usage-do li, .usage-dont li {
+  font-size: 0.875rem;
+  margin-bottom: 6px;
+  color: #444;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Header -->
+  <div class="brand-header">
+    <h1>Clawbster Brand Guide</h1>
+    <p>Visual identity reference for clawbst.er</p>
+  </div>
+
+  <!-- Colors -->
+  <section>
+    <h2>Color Palette</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background: #E63946;"></div>
+        <div class="color-info">
+          <div class="color-name">Claw Red</div>
+          <div class="color-hex">#E63946</div>
+          <div class="color-use">Primary accent, crab claws, highlights</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #C62B38;"></div>
+        <div class="color-info">
+          <div class="color-name">Deep Red</div>
+          <div class="color-hex">#C62B38</div>
+          <div class="color-use">CTA buttons, hover states</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #E9C46A;"></div>
+        <div class="color-info">
+          <div class="color-name">Sand Gold</div>
+          <div class="color-hex">#E9C46A</div>
+          <div class="color-use">Warm accent, decorative</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #F4A261;"></div>
+        <div class="color-info">
+          <div class="color-name">Body Orange</div>
+          <div class="color-hex">#F4A261</div>
+          <div class="color-use">Crab body, warm highlights</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #FAF8F5;"></div>
+        <div class="color-info">
+          <div class="color-name">Warm Parchment</div>
+          <div class="color-hex">#FAF8F5</div>
+          <div class="color-use">Page background</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #1A1A1A;"></div>
+        <div class="color-info">
+          <div class="color-name">Ink Black</div>
+          <div class="color-hex">#1A1A1A</div>
+          <div class="color-use">Headings, body text</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #7A746B;"></div>
+        <div class="color-info">
+          <div class="color-name">Warm Gray</div>
+          <div class="color-hex">#7A746B</div>
+          <div class="color-use">Muted text, captions, dividers</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #FFFFFF; border-bottom: 1px solid #eee;"></div>
+        <div class="color-info">
+          <div class="color-name">White</div>
+          <div class="color-hex">#FFFFFF</div>
+          <div class="color-use">Button text, card surfaces</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section>
+    <h2>Typography</h2>
+
+    <div class="type-specimen">
+      <div class="sample">
+        <div class="sample-heading" style="font-size: 3rem; line-height: 1.1; margin-bottom: 8px;">
+          Build with friends.
+        </div>
+        <div class="sample-heading" style="font-size: 3rem; line-height: 1.1; color: #E63946;">
+          Ship with purpose.
+        </div>
+      </div>
+      <dl class="type-meta">
+        <div>
+          <dt>Font</dt>
+          <dd>Fraunces</dd>
+        </div>
+        <div>
+          <dt>Weight</dt>
+          <dd>800 (ExtraBold)</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>Display headings</dd>
+        </div>
+        <div>
+          <dt>Tracking</dt>
+          <dd>-0.03em</dd>
+        </div>
+        <div>
+          <dt>Source</dt>
+          <dd>Google Fonts (variable, optical size 9-144)</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="type-specimen">
+      <div class="sample">
+        <div class="sample-heading" style="font-size: 1.5rem; line-height: 1.15; font-weight: 700; margin-bottom: 8px;">
+          Section Heading
+        </div>
+      </div>
+      <dl class="type-meta">
+        <div>
+          <dt>Font</dt>
+          <dd>Fraunces</dd>
+        </div>
+        <div>
+          <dt>Weight</dt>
+          <dd>700 (Bold)</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>Section titles, nav logo</dd>
+        </div>
+        <div>
+          <dt>Tracking</dt>
+          <dd>-0.02em</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Inter: Hero subtitle -->
+    <div class="type-specimen">
+      <div class="sample">
+        <div class="sample-body" style="font-size: 1.125rem; line-height: 1.55; color: #1A1A1A; opacity: 0.65;">
+          An AI builder collective that meets in real life.
+        </div>
+      </div>
+      <dl class="type-meta">
+        <div>
+          <dt>Font</dt>
+          <dd>Inter</dd>
+        </div>
+        <div>
+          <dt>Size</dt>
+          <dd>1.125rem (18px)</dd>
+        </div>
+        <div>
+          <dt>Weight</dt>
+          <dd>400 (Regular)</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>Hero subtitle, body paragraphs</dd>
+        </div>
+        <div>
+          <dt>Opacity</dt>
+          <dd>0.65</dd>
+        </div>
+        <div>
+          <dt>Tracking</dt>
+          <dd>-0.005em</dd>
+        </div>
+        <div>
+          <dt>Source</dt>
+          <dd>Google Fonts</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Inter: CTA Button -->
+    <div class="type-specimen">
+      <div class="sample">
+        <div style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #C62B38; color: #fff; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600;">
+          Join the Colony <span aria-hidden="true">&rarr;</span>
+        </div>
+      </div>
+      <dl class="type-meta">
+        <div>
+          <dt>Font</dt>
+          <dd>Inter</dd>
+        </div>
+        <div>
+          <dt>Size</dt>
+          <dd>1.05rem (16.8px)</dd>
+        </div>
+        <div>
+          <dt>Weight</dt>
+          <dd>600 (SemiBold)</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>Primary CTA button</dd>
+        </div>
+        <div>
+          <dt>Color</dt>
+          <dd>#FFFFFF on #C62B38</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Inter: Nav links -->
+    <div class="type-specimen">
+      <div class="sample">
+        <div style="display: flex; gap: 32px; align-items: center; font-family: 'Inter', sans-serif;">
+          <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">About</span>
+          <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">The Loop</span>
+          <span style="font-size: 0.875rem; font-weight: 600; background: #C62B38; color: #fff; padding: 6px 14px; border-radius: 8px;">Join &rarr;</span>
+        </div>
+      </div>
+      <dl class="type-meta">
+        <div>
+          <dt>Font</dt>
+          <dd>Inter</dd>
+        </div>
+        <div>
+          <dt>Size</dt>
+          <dd>0.9rem links / 0.875rem nav CTA</dd>
+        </div>
+        <div>
+          <dt>Weight</dt>
+          <dd>500 (Medium) links / 600 (SemiBold) CTA</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>Navigation bar items</dd>
+        </div>
+        <div>
+          <dt>Opacity</dt>
+          <dd>0.7 default, 1.0 on hover</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Inter: FAQ / small text -->
+    <div class="type-specimen">
+      <div class="sample">
+        <div style="font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.6; color: #1A1A1A; opacity: 0.75;">
+          Clawbster is an in-person AI builder collective. We meet regularly to share what we're building with AI agents, exchange workflows, and help each other level up.
+        </div>
+      </div>
+      <dl class="type-meta">
+        <div>
+          <dt>Font</dt>
+          <dd>Inter</dd>
+        </div>
+        <div>
+          <dt>Size</dt>
+          <dd>0.9rem (14.4px)</dd>
+        </div>
+        <div>
+          <dt>Weight</dt>
+          <dd>400 (Regular)</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>FAQ answers, loop descriptions, small body text</dd>
+        </div>
+        <div>
+          <dt>Line height</dt>
+          <dd>1.6</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Inter: Loop labels -->
+    <div class="type-specimen">
+      <div class="sample">
+        <div style="display: flex; gap: 48px; font-family: 'Inter', sans-serif;">
+          <span style="font-size: 0.85rem; color: #7A746B;">Use AI agents daily.</span>
+          <span style="font-size: 0.85rem; color: #7A746B;">Show up. Show your screen.</span>
+          <span style="font-size: 0.85rem; color: #7A746B;">Exchange workflows and wins.</span>
+        </div>
+      </div>
+      <dl class="type-meta">
+        <div>
+          <dt>Font</dt>
+          <dd>Inter</dd>
+        </div>
+        <div>
+          <dt>Size</dt>
+          <dd>0.85rem (13.6px)</dd>
+        </div>
+        <div>
+          <dt>Weight</dt>
+          <dd>400 (Regular)</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>Loop step descriptions, captions</dd>
+        </div>
+        <div>
+          <dt>Color</dt>
+          <dd>#7A746B (Warm Gray)</dd>
+        </div>
+      </dl>
+    </div>
+
+  </section>
+
+  <!-- Mascot -->
+  <section>
+    <h2>Mascot</h2>
+    <div class="mascot-section">
+      <div class="mascot-preview">
+        <img src="clawbster-mascot.png" alt="Clawbster mascot on light background">
+      </div>
+      <div class="mascot-preview mascot-preview-dark">
+        <img src="clawbster-mascot.png" alt="Clawbster mascot on dark background">
+      </div>
+      <div class="mascot-details">
+        <h3>Clawbster Crab</h3>
+        <ul>
+          <li><strong>Format:</strong> PNG, 800x800px, transparent background</li>
+          <li><strong>Style:</strong> Pixel art, chibi proportions</li>
+          <li><strong>Colors:</strong> Claw Red, Body Orange, Sand Gold, Ink Black (outline + eyes)</li>
+          <li><strong>File:</strong> /public/img/clawbster-mascot.png</li>
+          <li><strong>Animation:</strong> Gentle bob (3s ease-in-out infinite)</li>
+          <li><strong>Shadow:</strong> drop-shadow(0 8px 24px rgba(0,0,0,0.1))</li>
+          <li><strong>Nav size:</strong> 40x40px</li>
+          <li><strong>Hero size:</strong> 280x280px</li>
+          <li><strong>OG image size:</strong> 300x300px</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Assets -->
+  <section>
+    <h2>Assets</h2>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <img src="clawbster-mascot.png" alt="Mascot" style="width: 80px; height: 80px;">
+        <div class="asset-name">Mascot</div>
+        <div class="asset-size">800x800 PNG</div>
+      </div>
+      <div class="asset-card">
+        <img src="og-image.png" alt="OG Image" style="width: 160px; border-radius: 4px;">
+        <div class="asset-name">OG Image</div>
+        <div class="asset-size">1200x630 PNG</div>
+      </div>
+      <div class="asset-card">
+        <img src="favicon-32x32.png" alt="Favicon 32" style="width: 32px; height: 32px; image-rendering: pixelated;">
+        <div class="asset-name">Favicon</div>
+        <div class="asset-size">32x32, 16x16 PNG</div>
+      </div>
+      <div class="asset-card">
+        <img src="apple-touch-icon.png" alt="Apple Touch Icon" style="width: 60px; height: 60px; border-radius: 12px;">
+        <div class="asset-name">Apple Touch Icon</div>
+        <div class="asset-size">180x180 PNG</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spacing -->
+  <section>
+    <h2>Spacing Scale</h2>
+    <div class="spacing-row">
+      <div class="spacing-label">8px</div>
+      <div class="spacing-bar" style="width: 8px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">16px</div>
+      <div class="spacing-bar" style="width: 16px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">24px</div>
+      <div class="spacing-bar" style="width: 24px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">32px</div>
+      <div class="spacing-bar" style="width: 32px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">48px</div>
+      <div class="spacing-bar" style="width: 48px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">64px</div>
+      <div class="spacing-bar" style="width: 64px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">80px</div>
+      <div class="spacing-bar" style="width: 80px;"></div>
+    </div>
+  </section>
+
+  <!-- Usage -->
+  <section>
+    <h2>Usage Guidelines</h2>
+    <div class="usage-grid">
+      <div class="usage-do">
+        <h3>Do</h3>
+        <ul>
+          <li>Use Fraunces for all headings and the logo</li>
+          <li>Use Inter for body text, buttons, and UI</li>
+          <li>Keep the warm parchment background (#FAF8F5)</li>
+          <li>Use Claw Red as the primary accent</li>
+          <li>Give the mascot room to breathe</li>
+          <li>Maintain transparent background on mascot</li>
+          <li>Use drop-shadow (not box-shadow) on mascot</li>
+        </ul>
+      </div>
+      <div class="usage-dont">
+        <h3>Don't</h3>
+        <ul>
+          <li>Don't stretch or distort the mascot</li>
+          <li>Don't place mascot on busy backgrounds</li>
+          <li>Don't use pure white (#FFF) as page background</li>
+          <li>Don't mix in other serif fonts</li>
+          <li>Don't use Claw Red for large text blocks</li>
+          <li>Don't add borders or outlines to the mascot</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

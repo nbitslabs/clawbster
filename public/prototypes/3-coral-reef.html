@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clawbster — AI Builder Collective</title>
+  <meta name="description" content="Clawbster is an AI builder collective that meets IRL. Build together, grow together.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Design Tokens ── */
+    :root {
+      --bg: #FFFBF7;
+      --claw-red: #E63946;
+      --ocean-teal: #2A9D8F;
+      --sand-gold: #E9C46A;
+      --soft-black: #2B2B2B;
+      --body-orange: #F4A261;
+      --white: #FFFFFF;
+      --shadow-sm: 0 2px 8px rgba(43,43,43,0.06);
+      --shadow-md: 0 4px 20px rgba(43,43,43,0.08);
+      --shadow-lg: 0 8px 32px rgba(43,43,43,0.12);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --font-heading: 'Sora', sans-serif;
+      --font-body: 'Source Sans 3', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--soft-black);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Utility ── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Fade-in on scroll ── */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--soft-black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: inline-flex;
+      align-items: center;
+    }
+    .nav-logo-img {
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .nav-cta {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--claw-red);
+      text-decoration: none;
+      padding: 8px 18px;
+      border: 2px solid var(--claw-red);
+      border-radius: 10px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover, .nav-cta:focus-visible {
+      background: var(--claw-red);
+      color: var(--white);
+    }
+
+    /* ── Hero ── */
+    .hero-wrapper {
+      padding: 24px 0 80px;
+    }
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #FFF5ED 0%, #FDE8D8 50%, #FAE0CF 100%);
+      border-radius: var(--radius-lg);
+      padding: 64px 56px;
+      overflow: visible;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      min-height: 380px;
+    }
+    .hero-content {
+      flex: 1 1 55%;
+      max-width: 540px;
+      z-index: 2;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--soft-black);
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      color: var(--claw-red);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--white);
+      background: var(--claw-red);
+      border: none;
+      border-radius: 12px;
+      padding: 14px 28px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      box-shadow: 0 4px 16px rgba(230,57,70,0.25);
+    }
+    .btn-primary:hover, .btn-primary:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(230,57,70,0.35);
+      background: #d42f3d;
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--soft-black);
+      background: transparent;
+      border: 2px solid rgba(43,43,43,0.15);
+      border-radius: 12px;
+      padding: 12px 24px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .btn-secondary:hover, .btn-secondary:focus-visible {
+      border-color: var(--ocean-teal);
+      background: rgba(42,157,143,0.06);
+      transform: translateY(-1px);
+    }
+
+    /* ── Crab Mascot Container ── */
+    .hero-mascot {
+      flex: 0 0 280px;
+      position: relative;
+      height: 300px;
+      z-index: 3;
+    }
+    .crab-anchor {
+      position: absolute;
+      bottom: -100px;
+      right: -20px;
+    }
+
+    /* ── PNG Mascot Image ── */
+    .mascot-img {
+      width: 260px;
+      height: 260px;
+      image-rendering: auto;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.1));
+      /* Entrance animation — springy slide up */
+      animation: mascot-entrance 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+    }
+
+    @keyframes mascot-entrance {
+      0% {
+        opacity: 0;
+        transform: translateY(80px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Subtle idle hover after entrance */
+    @keyframes mascot-idle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .mascot-img.animated {
+      animation: mascot-idle 3s ease-in-out infinite;
+    }
+
+    /* ── Loop Cards Section ── */
+    .loop-section {
+      padding: 40px 0 60px;
+    }
+    .loop-section h2 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.6rem;
+      text-align: center;
+      margin-bottom: 12px;
+      color: var(--soft-black);
+    }
+    .loop-section .subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.05rem;
+      margin-bottom: 40px;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .loop-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(43,43,43,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-align: center;
+    }
+    .loop-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 18px;
+    }
+    .card-icon-build { background: rgba(230,57,70,0.1); }
+    .card-icon-meet { background: rgba(42,157,143,0.1); }
+    .card-icon-share { background: rgba(233,196,106,0.15); }
+    .card-icon-level { background: rgba(244,162,97,0.12); }
+
+    .loop-card h3 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+      color: var(--soft-black);
+    }
+    .loop-card p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* Colored underline accent on card headings */
+    .loop-card:nth-child(1) h3 { color: var(--claw-red); }
+    .loop-card:nth-child(2) h3 { color: var(--ocean-teal); }
+    .loop-card:nth-child(3) h3 { color: #c9a030; }
+    .loop-card:nth-child(4) h3 { color: var(--body-orange); }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      padding: 20px 0 60px;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, var(--ocean-teal) 0%, #238a7e 100%);
+      border-radius: var(--radius-lg);
+      padding: 56px 40px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(42,157,143,0.2);
+    }
+    .cta-box h2 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .cta-box p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ocean-teal);
+      background: var(--white);
+      border: none;
+      border-radius: 14px;
+      padding: 16px 32px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+    .btn-cta:hover, .btn-cta:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 32px 24px;
+      text-align: center;
+      color: #999;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #777;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--claw-red); }
+    footer span { margin: 0 8px; }
+
+    /* ── Reduced Motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .mascot-img,
+      .mascot-img.animated {
+        animation: none !important;
+      }
+      .fade-section {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .loop-card {
+        transition: none;
+      }
+      .btn-primary, .btn-secondary, .btn-cta, .nav-cta {
+        transition: none;
+      }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        flex-direction: column;
+        padding: 40px 28px 60px;
+        text-align: center;
+        min-height: auto;
+      }
+      .hero-content {
+        max-width: 100%;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .hero-mascot {
+        flex: none;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+      .crab-anchor {
+        bottom: -80px;
+        right: -10px;
+      }
+      .mascot-img {
+        width: 220px;
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 32px 20px 50px;
+      }
+      nav {
+        padding: 16px 20px;
+      }
+      .cta-box {
+        padding: 40px 24px;
+      }
+    }
+
+    /* ── Focus visible for accessibility ── */
+    :focus-visible {
+      outline: 3px solid var(--ocean-teal);
+      outline-offset: 3px;
+    }
+
+    /* ── Skip to main ── */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 16px;
+      background: var(--soft-black);
+      color: var(--white);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      z-index: 100;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ── Nav ── -->
+  <header>
+    <nav aria-label="Main navigation">
+      <a href="/" class="nav-logo" aria-label="Clawbster home"><img src="../img/clawbster-mascot.png" alt="" class="nav-logo-img" aria-hidden="true">clawbster</a>
+      <a href="https://lu.ma/clawbster" class="nav-cta" target="_blank" rel="noopener noreferrer" aria-label="Join the next Clawbster meetup on Luma">Join Meetup &#x2197;</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ── Hero ── -->
+    <section class="hero-wrapper container" aria-label="Hero">
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Build together.<br><span>Grow together.</span></h1>
+          <p>An AI builder collective that meets IRL. Share your agentic journey, enrich each other's lives, and level up as a community.</p>
+          <div class="hero-buttons">
+            <a href="https://lu.ma/clawbster" class="btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Join the collective on Luma">Join <span aria-hidden="true">&rarr;</span></a>
+            <a href="#loop" class="btn-secondary">Learn more</a>
+          </div>
+        </div>
+
+        <!-- PNG Crab Mascot — peeks over bottom-right edge -->
+        <div class="hero-mascot" aria-hidden="true">
+          <div class="crab-anchor">
+            <img src="../img/clawbster-mascot.png" alt="Clawbster mascot" class="mascot-img" id="mascot" aria-label="Clawbster mascot — a cute pixel art crab">
+          </div><!-- /crab-anchor -->
+        </div><!-- /hero-mascot -->
+      </div><!-- /hero -->
+    </section>
+
+    <!-- ── Loop Section ── -->
+    <section id="loop" class="loop-section container fade-section" aria-label="The Clawbster loop">
+      <h2>The Loop</h2>
+      <p class="subtitle">Four steps. Infinite growth.</p>
+      <div class="cards-grid">
+        <article class="loop-card">
+          <div class="card-icon card-icon-build" aria-hidden="true">&#x1F6E0;&#xFE0F;</div>
+          <h3>Build</h3>
+          <p>Create AI agents, tools, and workflows. Push the boundaries of what's possible with your hands on the keyboard.</p>
+        </article>
+        <article class="loop-card">
+          <div class="card-icon card-icon-meet" aria-hidden="true">&#x1F91D;</div>
+          <h3>Meet</h3>
+          <p>Show up IRL. Faces, handshakes, real conversations. The kind of connection that Slack channels can never replace.</p>
+        </article>
+        <article class="loop-card">
+          <div class="card-icon card-icon-share" aria-hidden="true">&#x1F4A1;</div>
+          <h3>Share</h3>
+          <p>Demo your work, share your agentic journey, exchange prompts and techniques. Knowledge multiplies when it flows.</p>
+        </article>
+        <article class="loop-card">
+          <div class="card-icon card-icon-level" aria-hidden="true">&#x1F680;</div>
+          <h3>Level Up</h3>
+          <p>Each cycle compounds. Better tools, deeper skills, stronger network. The collective makes everyone sharper.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── CTA Section ── -->
+    <section class="cta-section container fade-section" aria-label="Call to action">
+      <div class="cta-box">
+        <h2>Ready?</h2>
+        <p>Come build with us. The next meetup is closer than you think.</p>
+        <a href="https://lu.ma/clawbster" class="btn-cta" target="_blank" rel="noopener noreferrer" aria-label="Join the next Clawbster meetup on Luma">Join the Next Meetup <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <span>clawbst.er</span>
+    <span>&middot;</span>
+    <a href="https://lu.ma/clawbster" target="_blank" rel="noopener noreferrer">Luma</a>
+    <span>&middot;</span>
+    <span>&copy; 2026</span>
+  </footer>
+
+  <!-- ── JavaScript ── -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Fade-in on scroll (Intersection Observer)
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReduced) {
+        var fadeSections = document.querySelectorAll('.fade-section');
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+
+        fadeSections.forEach(function (section) {
+          observer.observe(section);
+        });
+
+        // After entrance animation, switch to idle hover
+        var mascot = document.getElementById('mascot');
+        if (mascot) {
+          mascot.addEventListener('animationend', function () {
+            mascot.classList.add('animated');
+          }, { once: true });
+        }
+      } else {
+        // Immediately show everything if reduced motion
+        document.querySelectorAll('.fade-section').forEach(function (s) {
+          s.classList.add('visible');
+        });
+      }
+
+      // Smooth scroll for Learn more
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

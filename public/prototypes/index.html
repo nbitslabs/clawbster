@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clawbster — Design Prototypes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #F8F7F4;
+      color: #1A1A1A;
+      min-height: 100vh;
+      padding: 48px 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #E4E4E7;
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .card-preview {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      position: relative;
+    }
+
+    .card-body {
+      padding: 20px 24px 24px;
+      border-top: 1px solid #E4E4E7;
+    }
+
+    .card-number {
+      font-size: 12px;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card-feel {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: #F5F5F0;
+      color: #555;
+    }
+
+    /* Card-specific preview backgrounds */
+    .card-1 .card-preview { background: #FAF8F5; }
+    .card-2 .card-preview { background: #F5F5F0; }
+    .card-3 .card-preview { background: #FFFBF7; }
+    .card-4 .card-preview { background: #F2F0EB; }
+    .card-5 .card-preview { background: #F8F7F4; }
+
+    .warmth-bar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 12px;
+    }
+
+    .warmth-label {
+      font-size: 11px;
+      color: #999;
+      margin-right: 4px;
+    }
+
+    .warmth-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #E4E4E7;
+    }
+
+    .warmth-dot.filled {
+      background: #E63946;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 64px;
+      color: #999;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; }
+      body { padding: 32px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Clawbster Prototypes</h1>
+    <p class="subtitle">5 design iterations — open each to preview, then pick your favorite.</p>
+
+    <div class="grid">
+      <a href="1-tide-pool.html" class="card card-1">
+        <div class="card-preview">🌊</div>
+        <div class="card-body">
+          <div class="card-number">Prototype 01</div>
+          <div class="card-title">Tide Pool</div>
+          <div class="card-feel">Stripe editorial warmth</div>
+          <div class="card-meta">
+            <span class="tag">Fraunces serif</span>
+            <span class="tag">Text-left / crab-right</span>
+            <span class="tag">2 accents</span>
+          </div>
+          <div class="warmth-bar">
+            <span class="warmth-label">Warmth</span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="2-sand-dollar.html" class="card card-2">
+        <div class="card-preview">🪙</div>
+        <div class="card-body">
+          <div class="card-number">Prototype 02</div>
+          <div class="card-title">Sand Dollar</div>
+          <div class="card-feel">Linear/Vercel ultra-minimal</div>
+          <div class="card-meta">
+            <span class="tag">Space Grotesk</span>
+            <span class="tag">Centered / crab-above</span>
+            <span class="tag">1 accent</span>
+          </div>
+          <div class="warmth-bar">
+            <span class="warmth-label">Warmth</span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="3-coral-reef.html" class="card card-3">
+        <div class="card-preview">🪸</div>
+        <div class="card-body">
+          <div class="card-number">Prototype 03</div>
+          <div class="card-title">Coral Reef</div>
+          <div class="card-feel">Notion/Figma playful community</div>
+          <div class="card-meta">
+            <span class="tag">Sora rounded</span>
+            <span class="tag">Crab breaks out</span>
+            <span class="tag">3 accents</span>
+          </div>
+          <div class="warmth-bar">
+            <span class="warmth-label">Warmth</span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot"></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="4-jetty.html" class="card card-4">
+        <div class="card-preview">📰</div>
+        <div class="card-body">
+          <div class="card-number">Prototype 04</div>
+          <div class="card-title">Jetty</div>
+          <div class="card-feel">Magazine editorial grid</div>
+          <div class="card-meta">
+            <span class="tag">Instrument Serif</span>
+            <span class="tag">60/40 split + shelf</span>
+            <span class="tag">2 accents</span>
+          </div>
+          <div class="warmth-bar">
+            <span class="warmth-label">Warmth</span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="5-prism.html" class="card card-5">
+        <div class="card-preview">🔷</div>
+        <div class="card-body">
+          <div class="card-number">Prototype 05</div>
+          <div class="card-title">Prism</div>
+          <div class="card-feel">Bento-grid product system</div>
+          <div class="card-meta">
+            <span class="tag">Manrope geo</span>
+            <span class="tag">Bento cards</span>
+            <span class="tag">1 accent + borders</span>
+          </div>
+          <div class="warmth-bar">
+            <span class="warmth-label">Warmth</span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot filled"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+            <span class="warmth-dot"></span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <footer>clawbst.er prototypes &middot; pick one, then we build it for production</footer>
+  </div>
+</body>
+</html>

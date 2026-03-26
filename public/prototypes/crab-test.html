@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crab Mascot — Pixelbrick Test</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #F8F7F4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 48px;
+      margin: 0;
+      padding: 24px;
+    }
+    h1 { font-size: 24px; color: #1A1A1A; margin: 0; }
+    .sizes { display: flex; gap: 48px; align-items: flex-end; flex-wrap: wrap; justify-content: center; }
+    .size-label { text-align: center; color: #666; font-size: 13px; margin-top: 12px; }
+    .ref-compare {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .ref-compare img {
+      width: 256px;
+      height: 256px;
+      image-rendering: pixelated;
+      border: 1px solid #E4E4E7;
+      border-radius: 8px;
+    }
+    .label { font-size: 12px; color: #999; text-align: center; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Clawbster Mascot — Pixelbrick Rendering</h1>
+
+  <div class="ref-compare">
+    <div>
+      <img src="../img/clawbster-mascot.png" alt="Original mascot" onerror="this.alt='Reference not found'; this.style.border='2px dashed #ccc';">
+      <div class="label">Original reference</div>
+    </div>
+    <div>
+      <div id="crab-large"></div>
+      <div class="label">Pixelbrick render (20px)</div>
+    </div>
+  </div>
+
+  <div class="sizes">
+    <div>
+      <div id="crab-8"></div>
+      <div class="size-label">8px bricks</div>
+    </div>
+    <div>
+      <div id="crab-12"></div>
+      <div class="size-label">12px bricks</div>
+    </div>
+    <div>
+      <div id="crab-16"></div>
+      <div class="size-label">16px bricks</div>
+    </div>
+    <div>
+      <div id="crab-24"></div>
+      <div class="size-label">24px bricks (no studs)</div>
+    </div>
+  </div>
+
+  <script src="../js/crab-voxel-map.js"></script>
+  <script>
+    renderCrab(document.getElementById('crab-large'), { pixelSize: 20, showStuds: true });
+    renderCrab(document.getElementById('crab-8'),  { pixelSize: 8,  showStuds: true });
+    renderCrab(document.getElementById('crab-12'), { pixelSize: 12, showStuds: true });
+    renderCrab(document.getElementById('crab-16'), { pixelSize: 16, showStuds: true });
+    renderCrab(document.getElementById('crab-24'), { pixelSize: 24, showStuds: false });
+  </script>
+</body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clawbster | The AI Builder Collective That Meets IRL</title>
+<meta name="description" content="Clawbster is an AI builder collective where members meet in real life, share agentic AI workflows, and level up together. Join our next meetup.">
+<meta name="keywords" content="AI builder collective, AI meetup, agentic AI community, AI builders group, AI agents meetup, build with AI">
+<meta name="author" content="Clawbster">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://clawbste.rs/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clawbste.rs/">
+<meta property="og:title" content="Clawbster | The AI Builder Collective That Meets IRL">
+<meta property="og:description" content="Clawbster is an AI builder collective where members meet in real life, share agentic AI workflows, and level up together. Join our next meetup.">
+<meta property="og:image" content="https://clawbste.rs/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Clawbster">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Clawbster | The AI Builder Collective That Meets IRL">
+<meta name="twitter:description" content="AI builders meet IRL to share agentic workflows, trade wins, and level up together.">
+<meta name="twitter:image" content="https://clawbste.rs/img/og-image.png">
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #FAF8F5;
+  --claw-red: #E63946;
+  --warm-gray: #7A746B;
+  --text: #1A1A1A;
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ========================================
+   LAYOUT
+   ======================================== */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========================================
+   NAV
+   ======================================== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 248, 245, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(184, 178, 168, 0.25);
+}
+
+.nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  opacity: 1;
+}
+
+.nav-links .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 18px;
+  background: #C62B38;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  opacity: 1;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.nav-links .nav-cta:hover,
+.nav-links .nav-cta:focus-visible {
+  background: #a82430;
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  padding: 80px 0 60px;
+}
+
+.hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 540px;
+}
+
+.hero-text h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.hero-text h1 .accent {
+  color: var(--claw-red);
+}
+
+.hero-text p {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  opacity: 0.65;
+  margin-bottom: 36px;
+  max-width: 420px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: #C62B38;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 12px rgba(198, 43, 56, 0.2);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: #a82430;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(198, 43, 56, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.hero-mascot {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   MASCOT IMAGE
+   ======================================== */
+.mascot-img {
+  width: 280px;
+  height: 280px;
+  animation: mascot-bob 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.1));
+}
+
+@keyframes mascot-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ========================================
+   DIVIDER
+   ======================================== */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--warm-gray), transparent);
+  opacity: 0.5;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+/* ========================================
+   LOOP SECTION
+   ======================================== */
+.loop {
+  padding: 72px 0;
+}
+
+.loop-heading {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--warm-gray);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+
+.loop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Dotted connector line */
+.loop-grid::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--warm-gray) 0px,
+    var(--warm-gray) 6px,
+    transparent 6px,
+    transparent 14px
+  );
+  opacity: 0.45;
+  z-index: 0;
+}
+
+.loop-step {
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.loop-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--warm-gray);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--claw-red);
+  margin-bottom: 20px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.loop-step:hover .loop-step-number {
+  background: var(--claw-red);
+  border-color: var(--claw-red);
+  color: #fff;
+}
+
+.loop-step h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.loop-step p {
+  font-size: 0.9rem;
+  color: #636058;
+  line-height: 1.5;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+.cta-section {
+  padding: 72px 0 80px;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.cta-section p {
+  font-size: 1.05rem;
+  color: #636058;
+  margin-bottom: 36px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  padding: 32px 0;
+  text-align: center;
+  border-top: 1px solid rgba(184, 178, 168, 0.25);
+}
+
+.footer p {
+  font-size: 0.85rem;
+  color: var(--warm-gray);
+}
+
+/* ========================================
+   SCROLL REVEAL
+   ======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px 0 40px;
+  }
+
+  .hero .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-text p {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-mascot {
+    width: 240px;
+    height: 240px;
+    order: -1;
+  }
+
+  .mascot-img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .loop-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 16px;
+  }
+
+  .loop-grid::before {
+    display: none;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .nav-links .label-hide-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .loop-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+}
+
+/* ========================================
+   FAQ SECTION
+   ======================================== */
+.faq-section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+.faq-heading {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+.faq-section details {
+  border-bottom: 1px solid var(--warm-gray);
+  padding: 16px 0;
+}
+.faq-section summary {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--text);
+}
+.faq-section summary::-webkit-details-marker { display: none; }
+.faq-section summary::before { content: '+ '; color: var(--claw-red); }
+.faq-section details[open] summary::before { content: '\2212  '; }
+.faq-section details p {
+  margin-top: 12px;
+  line-height: 1.6;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+/* ========================================
+   FOCUS STYLES
+   ======================================== */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--claw-red);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+</style>
+<noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Clawbster",
+      "alternateName": "Clawbster AI Builder Collective",
+      "url": "https://clawbste.rs",
+      "description": "Clawbster is an AI builder collective where members meet in real life to share agentic AI workflows, trade knowledge about building with AI agents, and level up together.",
+      "foundingDate": "2025",
+      "logo": { "@type": "ImageObject", "url": "https://clawbste.rs/img/clawbster-mascot.png" },
+      "knowsAbout": ["Artificial Intelligence", "AI Agents", "Agentic AI", "AI Workflows"]
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://clawbste.rs",
+      "name": "Clawbster",
+      "description": "The AI builder collective that meets IRL"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Clawbster?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Clawbster is an AI builder collective where members meet in real life to share their agentic AI journeys, demonstrate what they build with AI agents, and help each other level up." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I join a Clawbster meetup?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sign up through our Luma page at lu.ma/clawbster. Meetups are free and open to anyone building with AI agents and agentic workflows." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens at a Clawbster meetup?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Every meetup is a working session where real knowledge transfers happen. Members bring agentic workflows, automation pipelines, and lessons from deploying AI in production." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+  <!-- ===== NAV ===== -->
+  <header role="banner">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="#" class="nav-logo" aria-label="Clawbster home"><img src="img/clawbster-mascot.png" alt="" class="nav-logo-img" width="40" height="40" aria-hidden="true">Clawbster</a>
+      <ul class="nav-links">
+        <li><a href="#about" class="label-hide-mobile">About</a></li>
+        <li><a href="#loop" class="label-hide-mobile">Loop</a></li>
+        <li><a href="https://lu.ma/clawbster" target="_blank" rel="noopener noreferrer" class="nav-cta" aria-label="Join Clawbster on Luma">&rarr; Join</a></li>
+      </ul>
+    </div>
+  </nav>
+  </header>
+
+  <main>
+  <article>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="about" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero-text">
+        <h1 id="hero-heading" class="reveal">Build with friends.<br><span class="accent">Ship with purpose.</span></h1>
+        <p class="reveal reveal-delay-1">An AI builder collective that meets in real life.</p>
+        <a href="https://lu.ma/clawbster" target="_blank" rel="noopener noreferrer" class="btn-primary reveal reveal-delay-2" aria-label="Join the Colony on Luma">
+          Join the Colony &rarr;
+        </a>
+      </div>
+
+      <div class="hero-mascot reveal reveal-delay-3">
+        <img src="img/clawbster-mascot.png" alt="Clawbster mascot, a cute pixel art crab" class="mascot-img" width="280" height="280" fetchpriority="high" loading="eager" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DIVIDER ===== -->
+  <div class="divider" role="separator"></div>
+
+  <!-- ===== LOOP ===== -->
+  <section class="loop" id="loop" aria-labelledby="loop-heading">
+    <div class="container">
+      <h2 class="loop-heading reveal" id="loop-heading">The Loop</h2>
+      <div class="loop-grid">
+        <div class="loop-step reveal reveal-delay-1">
+          <div class="loop-step-number" aria-hidden="true">1</div>
+          <h3>Build</h3>
+          <p>Use AI agents daily.</p>
+        </div>
+        <div class="loop-step reveal reveal-delay-2">
+          <div class="loop-step-number" aria-hidden="true">2</div>
+          <h3>Meet</h3>
+          <p>Show up. Show your screen.</p>
+        </div>
+        <div class="loop-step reveal reveal-delay-3">
+          <div class="loop-step-number" aria-hidden="true">3</div>
+          <h3>Share</h3>
+          <p>Exchange workflows & wins.</p>
+        </div>
+        <div class="loop-step reveal reveal-delay-4">
+          <div class="loop-step-number" aria-hidden="true">4</div>
+          <h3>Level up</h3>
+          <p>Take new skills back. Repeat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DIVIDER ===== -->
+  <div class="divider" role="separator"></div>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq-section" aria-label="Frequently asked questions">
+    <h2 class="faq-heading">FAQ</h2>
+    <details>
+      <summary>What is Clawbster?</summary>
+      <p>Clawbster is an AI builder collective where members meet in real life to share their agentic AI journeys, demonstrate what they build with AI agents, and help each other level up.</p>
+    </details>
+    <details>
+      <summary>How do I join?</summary>
+      <p>Sign up through our Luma page. Meetups are free and open to anyone building with AI agents. Just bring something you built, something you broke, or something you can't figure out alone.</p>
+    </details>
+    <details>
+      <summary>What happens at a meetup?</summary>
+      <p>Every meetup is a working session where real knowledge transfers happen. Members bring agentic workflows, automation pipelines, and lessons from deploying AI in production.</p>
+    </details>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="container">
+      <h2 id="cta-heading" class="reveal">Ready to join?</h2>
+      <p class="reveal reveal-delay-1">Find your crew. Build something real.</p>
+      <a href="https://lu.ma/clawbster" target="_blank" rel="noopener noreferrer" class="btn-primary reveal reveal-delay-2" aria-label="Join the Colony on Luma">
+        Join the Colony &rarr;
+      </a>
+    </div>
+  </section>
+
+  </article>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>clawbste.rs &middot; &copy; 2026 &middot; <time datetime="2026-03-26">Updated March 2026</time></p>
+    </div>
+  </footer>
+
+  <!-- ===== SCROLL REVEAL JS ===== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* Respect reduced motion */
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReduced) {
+        /* Make everything visible immediately */
+        var els = document.querySelectorAll('.reveal');
+        for (var i = 0; i < els.length; i++) {
+          els[i].classList.add('visible');
+        }
+        return;
+      }
+
+      /* IntersectionObserver for scroll reveal */
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        }
+      );
+
+      var revealElements = document.querySelectorAll('.reveal');
+      revealElements.forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>

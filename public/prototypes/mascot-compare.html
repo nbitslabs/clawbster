@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mascot Treatment Comparison</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #F8F7F4;
+      color: #1A1A1A;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 24px;
+      gap: 48px;
+    }
+
+    h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; }
+    h2 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { color: #666; font-size: 15px; margin-top: 4px; }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 900px;
+      width: 100%;
+    }
+    @media (max-width: 700px) { .compare { grid-template-columns: 1fr; } }
+
+    .card {
+      background: #fff;
+      border: 1px solid #E4E4E7;
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .card .tag {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #999;
+    }
+
+    .mascot-area {
+      width: 280px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FAFAF8;
+      border-radius: 12px;
+    }
+
+    .notes { font-size: 13px; color: #666; text-align: center; line-height: 1.5; }
+
+    /* ── Option A: PNG as-is ── */
+    .mascot-plain img {
+      width: 240px;
+      height: 240px;
+      image-rendering: auto;
+      animation: mascot-bob 3s ease-in-out infinite;
+    }
+
+    /* ── Option B: CSS pixelated + 3D tilt ── */
+    .mascot-3d {
+      perspective: 600px;
+    }
+    .mascot-3d-inner {
+      transform-style: preserve-3d;
+      transform: rotateX(-8deg) rotateY(12deg);
+      animation: mascot-3d-idle 4s ease-in-out infinite;
+      transition: transform 0.4s ease;
+    }
+    .mascot-3d-inner:hover {
+      animation-play-state: paused;
+      transform: rotateX(-5deg) rotateY(-20deg);
+    }
+    .mascot-3d-inner img {
+      width: 240px;
+      height: 240px;
+      image-rendering: pixelated;
+      /* Brick/blocky enhancement */
+      filter: contrast(1.05);
+      /* Faux depth shadow */
+      box-shadow:
+        8px 8px 0 0 rgba(0,0,0,0.08),
+        16px 16px 0 0 rgba(0,0,0,0.04);
+      border-radius: 4px;
+    }
+
+    /* Bob animation for plain */
+    @keyframes mascot-bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* 3D idle: bob + subtle rotation */
+    @keyframes mascot-3d-idle {
+      0%, 100% {
+        transform: rotateX(-8deg) rotateY(12deg) translateY(0);
+      }
+      50% {
+        transform: rotateX(-6deg) rotateY(16deg) translateY(-10px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mascot-plain img,
+      .mascot-3d-inner {
+        animation: none !important;
+      }
+      .mascot-3d-inner {
+        transform: rotateX(-8deg) rotateY(12deg);
+      }
+    }
+
+    footer {
+      color: #999;
+      font-size: 13px;
+      margin-top: 32px;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <h1>Mascot Treatment Options</h1>
+    <p class="subtitle">Same PNG, two different CSS treatments</p>
+  </div>
+
+  <div class="compare">
+
+    <!-- Option A: PNG as-is -->
+    <div class="card">
+      <span class="tag">Option A</span>
+      <h2>PNG as-is</h2>
+      <div class="mascot-area mascot-plain">
+        <img src="../img/clawbster-mascot.png" alt="Clawbster mascot — plain PNG">
+      </div>
+      <p class="notes">
+        Original pixel art image, smooth rendering.<br>
+        Simple bob animation. Clean and faithful.
+      </p>
+    </div>
+
+    <!-- Option B: CSS pixelated + 3D tilt -->
+    <div class="card">
+      <span class="tag">Option B</span>
+      <h2>Pixelated + 3D Tilt</h2>
+      <div class="mascot-area mascot-3d">
+        <div class="mascot-3d-inner">
+          <img src="../img/clawbster-mascot.png" alt="Clawbster mascot — 3D pixelated treatment">
+        </div>
+      </div>
+      <p class="notes">
+        <code>image-rendering: pixelated</code> for crisp blocks.<br>
+        3D perspective tilt + offset shadow for depth.<br>
+        Hover to rotate. Bob + sway animation.
+      </p>
+    </div>
+
+  </div>
+
+  <footer>Pick one (or both!) — then we update all 5 prototypes</footer>
+
+</body>
+</html>

@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clawbster — The AI Builder Collective That Meets IRL</title>
+  <meta name="description" content="Clawbster is an AI builder collective where members meet in real life, share agentic AI workflows, and level up together. Join our next meetup.">
+  <meta name="keywords" content="AI builder collective, AI meetup, agentic AI community, AI builders group, AI agents meetup, build with AI">
+  <meta name="author" content="Clawbster">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://clawbst.er/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://clawbst.er/">
+  <meta property="og:title" content="Clawbster — The AI Builder Collective That Meets IRL">
+  <meta property="og:description" content="Clawbster is an AI builder collective where members meet in real life, share agentic AI workflows, and level up together. Join our next meetup.">
+  <meta property="og:image" content="https://clawbst.er/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Clawbster">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Clawbster — The AI Builder Collective That Meets IRL">
+  <meta name="twitter:description" content="AI builders meet IRL to share agentic workflows, trade wins, and level up together.">
+  <meta name="twitter:image" content="https://clawbst.er/img/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ============================
+       RESET & BASE
+       ============================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      background: #F8F7F4;
+      color: #18181B;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============================
+       DESIGN TOKENS
+       ============================ */
+    :root {
+      --bg: #F8F7F4;
+      --surface: #FFFFFF;
+      --border: #E4E4E7;
+      --text: #18181B;
+      --text-muted: #5A5A63;
+      --crab-red: #C62B38;
+      --crab-red-hover: #A8232F;
+      --crab-orange: #F4A261;
+      --crab-yellow: #E9C46A;
+      --crab-dark: #1D1D1D;
+      --radius: 20px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+      --shadow-hover: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+      --max-width: 960px;
+      --gap: 16px;
+    }
+
+    /* ============================
+       TYPOGRAPHY
+       ============================ */
+    h1, h2, h3, h4 {
+      font-family: 'Manrope', sans-serif;
+      line-height: 1.2;
+    }
+
+    h1, h2 { letter-spacing: -0.025em; }
+    h3 { letter-spacing: -0.01em; }
+
+    h1 { font-weight: 800; }
+    h2 { font-weight: 700; }
+    h3 { font-weight: 600; }
+
+    /* ============================
+       LAYOUT
+       ============================ */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================
+       BENTO CARD (shared)
+       ============================ */
+    .bento-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ============================
+       NAV
+       ============================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248, 247, 244, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-logo-img {
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .nav-join {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .nav-join:hover,
+    .nav-join:focus-visible {
+      background: #F4F4F5;
+      border-color: #D4D4D8;
+    }
+
+    .nav-join:focus-visible {
+      outline: 2px solid var(--crab-red);
+      outline-offset: 2px;
+    }
+
+    /* ============================
+       HERO
+       ============================ */
+    .hero {
+      padding-top: 40px;
+    }
+
+    .hero-card {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      align-items: center;
+      gap: 32px;
+      padding: 48px;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero-heading {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text);
+    }
+
+    .hero-subtext {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 400px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--crab-red);
+      border: none;
+      border-radius: 12px;
+      padding: 14px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      width: fit-content;
+    }
+
+    .btn-primary:hover {
+      background: var(--crab-red-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--crab-red);
+      outline-offset: 3px;
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* ============================
+       MASCOT IMAGE
+       ============================ */
+    .crab-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 300px;
+      height: 280px;
+      justify-self: center;
+    }
+
+    /* Orange glow behind the mascot */
+    .crab-wrapper::before {
+      content: '';
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244, 162, 97, 0.25) 0%, rgba(244, 162, 97, 0.08) 50%, transparent 70%);
+      filter: blur(8px);
+      z-index: 0;
+    }
+
+    .mascot-img {
+      width: 280px;
+      height: 280px;
+      image-rendering: auto;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.1));
+      animation: mascot-bob 3s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes mascot-bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ============================
+       STATS ROW
+       ============================ */
+    .stats-section {
+      padding-top: var(--gap);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap);
+    }
+
+    .stat-card {
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Manrope', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 6px;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Staggered fade-in */
+    .stat-card {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .stat-card.visible {
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .stat-card:nth-child(1).visible { animation-delay: 0s; }
+    .stat-card:nth-child(2).visible { animation-delay: 0.1s; }
+    .stat-card:nth-child(3).visible { animation-delay: 0.2s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ============================
+       LOOP SECTION (2x2 grid)
+       ============================ */
+    .loop-section {
+      padding-top: var(--gap);
+    }
+
+    .loop-heading {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .loop-grid-wrapper {
+      position: relative;
+    }
+
+    .loop-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+    }
+
+    /* Plus connector at intersection */
+    .loop-connector {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--crab-red);
+      box-shadow: var(--shadow);
+    }
+
+    .loop-card {
+      padding: 28px 24px;
+    }
+
+    .loop-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .dot-red { background: #E63946; }
+    .dot-orange { background: #F4A261; }
+    .dot-yellow { background: #E9C46A; }
+    .dot-green { background: #2A9D8F; }
+
+    .loop-step {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .loop-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================
+       CTA SECTION
+       ============================ */
+    .cta-section {
+      padding-top: var(--gap);
+    }
+
+    .cta-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .cta-heading {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    /* ============================
+       FOOTER
+       ============================ */
+    footer {
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* ============================
+       FAQ SECTION
+       ============================ */
+    .faq-section {
+      padding: 48px 0;
+    }
+
+    .faq-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+    }
+
+    .faq-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-card {
+      background: #fff;
+      border: 1px solid #E4E4E7;
+      border-radius: 16px;
+      padding: 20px 24px;
+      transition: box-shadow 0.2s;
+    }
+
+    .faq-card[open] {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .faq-card summary {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-card summary::-webkit-details-marker { display: none; }
+    .faq-card summary::after { content: '+'; color: var(--crab-red); font-size: 1.25rem; }
+    .faq-card[open] summary::after { content: '\2212'; }
+
+    .faq-card p {
+      margin-top: 12px;
+      line-height: 1.6;
+      color: #5A5A63;
+    }
+
+    /* ============================
+       RESPONSIVE
+       ============================ */
+    @media (max-width: 768px) {
+      .hero-card {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+        text-align: center;
+      }
+
+      .hero-content {
+        align-items: center;
+      }
+
+      .hero-subtext {
+        max-width: 100%;
+      }
+
+      .crab-wrapper {
+        width: 240px;
+        height: 220px;
+        order: -1;
+      }
+
+      .mascot-img {
+        width: 220px;
+        height: 220px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .loop-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .loop-connector {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --gap: 12px;
+      }
+
+      .hero-card {
+        padding: 24px 20px;
+      }
+
+      .stat-card {
+        padding: 20px 16px;
+      }
+
+      .loop-card {
+        padding: 20px 16px;
+      }
+
+      .cta-card {
+        padding: 36px 20px;
+      }
+    }
+
+    /* ============================
+       REDUCED MOTION
+       ============================ */
+    @media (prefers-reduced-motion: reduce) {
+      .stat-card {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+      }
+
+      .stat-card.visible {
+        animation: none !important;
+      }
+
+      .mascot-img {
+        animation: none !important;
+      }
+
+      .bento-card {
+        transition: none !important;
+      }
+
+      .btn-primary {
+        transition: none !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* ============================
+       FOCUS VISIBLE
+       ============================ */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--crab-red);
+      outline-offset: 2px;
+    }
+
+    /* ============================
+       SKIP LINK
+       ============================ */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 8px;
+      z-index: 200;
+      padding: 8px 16px;
+      background: var(--text);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 8px;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Clawbster",
+        "alternateName": "Clawbster AI Builder Collective",
+        "url": "https://clawbst.er",
+        "description": "Clawbster is an AI builder collective where members meet in real life to share agentic AI workflows, trade knowledge about building with AI agents, and level up together.",
+        "foundingDate": "2025",
+        "logo": { "@type": "ImageObject", "url": "https://clawbst.er/img/clawbster-mascot.png" },
+        "knowsAbout": ["Artificial Intelligence", "AI Agents", "Agentic AI", "AI Workflows"]
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://clawbst.er",
+        "name": "Clawbster",
+        "description": "The AI builder collective that meets IRL"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Clawbster?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Clawbster is an AI builder collective where members meet in real life to share their agentic AI journeys, demonstrate what they build with AI agents, and help each other level up. With 12+ meetups across 4 cities and 50+ builders, it's one of the most active in-person AI builder communities." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I join a Clawbster meetup?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sign up through our Luma page at lu.ma/clawbster. Meetups are free and open to anyone building with AI agents and agentic workflows." }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens at a Clawbster meetup?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Members sit at tables, show their screens, and share what actually works. Every meetup is a working session where real knowledge transfers happen — members bring agentic workflows, automation pipelines, and hard-won lessons from deploying AI." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ========================
+       NAV
+       ======================== -->
+  <header role="banner">
+    <nav aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="#" class="nav-brand" aria-label="Clawbster home"><img src="../img/clawbster-mascot.png" alt="" class="nav-logo-img" aria-hidden="true">Clawbster</a>
+        <a href="https://lu.ma/clawbster" class="nav-join" target="_blank" rel="noopener noreferrer" aria-label="Join Clawbster on Luma">
+          <span aria-hidden="true">&rarr;</span> Join
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================
+       MAIN
+       ======================== -->
+  <main id="main" class="container">
+    <article>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Introduction">
+      <div class="bento-card hero-card">
+        <div class="hero-content">
+          <h1 class="hero-heading">The AI builder collective that meets IRL.</h1>
+          <p class="hero-subtext">We share what we build with AI agents.</p>
+          <a href="https://lu.ma/clawbster" class="btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Join Clawbster on Luma">
+            Join on Luma <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Mascot Image -->
+        <div class="crab-wrapper" aria-hidden="true">
+          <img src="../img/clawbster-mascot.png" alt="Clawbster mascot" class="mascot-img" aria-label="Clawbster mascot — a cute pixel art crab" width="280" height="280" fetchpriority="high" loading="eager" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS ROW -->
+    <section class="stats-section" aria-label="Community stats">
+      <div class="stats-grid">
+        <div class="bento-card stat-card" role="figure" aria-label="12 plus meetups held">
+          <div class="stat-number">12+</div>
+          <div class="stat-label">Meetups</div>
+        </div>
+        <div class="bento-card stat-card" role="figure" aria-label="4 cities">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Cities</div>
+        </div>
+        <div class="bento-card stat-card" role="figure" aria-label="50 plus builders">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Builders</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOOP SECTION -->
+    <section class="loop-section" aria-label="The Clawbster loop">
+      <h2 class="loop-heading">The Loop</h2>
+      <div class="loop-grid-wrapper">
+        <div class="loop-connector" aria-hidden="true">+</div>
+        <div class="loop-grid">
+          <div class="bento-card loop-card">
+            <div class="loop-dot dot-red" aria-hidden="true"></div>
+            <h3 class="loop-step">Build</h3>
+            <p class="loop-desc">Push limits daily.</p>
+          </div>
+          <div class="bento-card loop-card">
+            <div class="loop-dot dot-orange" aria-hidden="true"></div>
+            <h3 class="loop-step">Meet</h3>
+            <p class="loop-desc">Show up. Show work.</p>
+          </div>
+          <div class="bento-card loop-card">
+            <div class="loop-dot dot-yellow" aria-hidden="true"></div>
+            <h3 class="loop-step">Share</h3>
+            <p class="loop-desc">Trade workflows &amp; wins.</p>
+          </div>
+          <div class="bento-card loop-card">
+            <div class="loop-dot dot-green" aria-hidden="true"></div>
+            <h3 class="loop-step">Level Up</h3>
+            <p class="loop-desc">Come back stronger.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" aria-label="Frequently asked questions">
+      <div class="container">
+        <h2>FAQ</h2>
+        <div class="faq-grid">
+          <details class="faq-card">
+            <summary>What is Clawbster?</summary>
+            <p>Clawbster is an AI builder collective where members meet in real life to share their agentic AI journeys, demonstrate what they build with AI agents, and help each other level up. With 12+ meetups across 4 cities and 50+ builders, it's one of the most active in-person AI builder communities.</p>
+          </details>
+          <details class="faq-card">
+            <summary>How do I join?</summary>
+            <p>Sign up through our Luma page. Meetups are free and open to anyone building with AI agents and agentic workflows. No pitch decks needed — just bring something you built, something you broke, or something you can't figure out alone.</p>
+          </details>
+          <details class="faq-card">
+            <summary>What happens at a meetup?</summary>
+            <p>Members sit at tables, show their screens, and share what actually works. Every meetup is a working session where real knowledge transfers happen — members bring agentic workflows, automation pipelines, and hard-won lessons from deploying AI.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section" aria-label="Call to action">
+      <div class="bento-card cta-card">
+        <h2 class="cta-heading">Ready?</h2>
+        <a href="https://lu.ma/clawbster" class="btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Join the next Clawbster meetup on Luma">
+          Join the Next Meetup <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </section>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-text">clawbst.er &middot; 2026 &middot; <time datetime="2026-03-26">Updated March 2026</time></p>
+  </footer>
+
+  <!-- ========================
+       JAVASCRIPT
+       ======================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* --------------------------------
+         Stat card intersection observer
+         (staggered fade-in)
+         -------------------------------- */
+      var statCards = document.querySelectorAll('.stat-card');
+
+      if (statCards.length > 0 && 'IntersectionObserver' in window && !prefersReducedMotion) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.2,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        statCards.forEach(function(card) {
+          observer.observe(card);
+        });
+      } else {
+        // If no IntersectionObserver or reduced motion, show immediately
+        statCards.forEach(function(card) {
+          card.style.opacity = '1';
+          card.style.transform = 'none';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

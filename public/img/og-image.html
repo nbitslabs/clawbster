@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1200px;
+      height: 630px;
+      background: #FAF8F5;
+      font-family: 'Inter', -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
+      padding: 0 80px;
+      width: 100%;
+    }
+    .text {
+      flex: 0 1 auto;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+    .logo span {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1A1A1A;
+      letter-spacing: -0.02em;
+    }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #1A1A1A;
+      margin-bottom: 20px;
+    }
+    h1 span {
+      color: #E63946;
+    }
+    p {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      color: #1A1A1A;
+      opacity: 0.55;
+      line-height: 1.4;
+      letter-spacing: -0.005em;
+    }
+    .mascot {
+      flex-shrink: 0;
+    }
+    .mascot img {
+      width: 360px;
+      height: 360px;
+    }
+    .url {
+      position: absolute;
+      bottom: 36px;
+      left: 88px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #7A746B;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="text">
+      <div class="logo">
+        <img src="clawbster-mascot.png" alt="">
+        <span>Clawbster</span>
+      </div>
+      <h1>Build with friends.<br><span>Ship with purpose.</span></h1>
+      <p>An AI builder collective that meets in real life.</p>
+    </div>
+    <div class="mascot">
+      <img src="clawbster-mascot.png" alt="">
+    </div>
+  </div>
+  <div class="url">clawbste.rs</div>
+</body>
+</html>

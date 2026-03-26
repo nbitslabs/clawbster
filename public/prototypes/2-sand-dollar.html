@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clawbster — An AI Builder Collective</title>
+  <meta name="description" content="Clawbster is an AI builder collective. Meet IRL, share the agentic journey, and level up together.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       DESIGN TOKENS
+       ============================================ */
+    :root {
+      --bg: #F5F5F0;
+      --surface: #EDEEE8;
+      --text: #111111;
+      --muted: #999990;
+      --accent: #E63946;
+      --font-heading: 'Space Grotesk', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ============================================
+       LAYOUT
+       ============================================ */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shadowBreathe {
+      0%, 100% {
+        transform: scale(1, 1);
+        opacity: 0.18;
+      }
+      50% {
+        transform: scale(1.15, 1.05);
+        opacity: 0.10;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+      animation: fadeIn 0.6s ease-out both;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-logo-img {
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--text);
+    }
+
+    .nav-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    .nav-link svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-link:hover svg {
+      transform: translateX(2px);
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 60px 0 80px;
+      animation: fadeInUp 0.8s ease-out 0.1s both;
+    }
+
+    .hero-mascot-wrap {
+      position: relative;
+      width: 240px;
+      height: 260px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .hero-mascot-shadow {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 18px;
+      background: radial-gradient(ellipse at center, rgba(17,17,17,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: shadowBreathe 3s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .hero-subtext {
+      font-family: var(--font-body);
+      font-size: clamp(16px, 2.5vw, 19px);
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 14px 32px;
+      border: 1.5px solid var(--text);
+      border-radius: 6px;
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    /* ============================================
+       NUMBERED SECTIONS
+       ============================================ */
+    .sections {
+      padding: 40px 0 80px;
+    }
+
+    .numbered-section {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: baseline;
+      padding: 48px 0;
+      border-top: 1px solid var(--surface);
+      animation: fadeInUp 0.8s ease-out both;
+    }
+
+    .numbered-section:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+
+    .numbered-section:nth-child(2) {
+      animation-delay: 0.45s;
+    }
+
+    .section-number {
+      font-family: var(--font-heading);
+      font-size: clamp(80px, 12vw, 120px);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--surface);
+      letter-spacing: -0.04em;
+      user-select: none;
+      min-width: 140px;
+    }
+
+    .section-text {
+      font-family: var(--font-heading);
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--text);
+      align-self: center;
+      max-width: 520px;
+    }
+
+    .section-text .highlight {
+      color: var(--accent);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--surface);
+      text-align: center;
+      animation: fadeIn 0.8s ease-out 0.6s both;
+    }
+
+    .footer p {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================
+       MASCOT IMAGE
+       ============================================ */
+    .mascot-img {
+      width: 240px;
+      height: 240px;
+      image-rendering: auto;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 640px) {
+      .nav {
+        padding: 20px 0;
+      }
+
+      .hero {
+        padding: 40px 0 60px;
+      }
+
+      .hero-mascot-wrap {
+        width: 200px;
+        height: 220px;
+        margin-bottom: 32px;
+      }
+
+      .mascot-img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .numbered-section {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 32px 0;
+      }
+
+      .section-number {
+        min-width: auto;
+      }
+
+      .section-text {
+        max-width: 100%;
+      }
+
+      .btn-primary {
+        padding: 12px 28px;
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .section-number {
+        min-width: 120px;
+      }
+    }
+
+    /* ============================================
+       FOCUS STYLES (accessibility)
+       ============================================ */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 100;
+      padding: 8px 16px;
+      background: var(--text);
+      color: var(--bg);
+      font-family: var(--font-body);
+      font-size: 14px;
+      border-radius: 4px;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip navigation for accessibility -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ==========================================
+       NAVIGATION
+       ========================================== -->
+  <header class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <span class="nav-logo" aria-label="Clawbster home"><img src="../img/clawbster-mascot.png" alt="" class="nav-logo-img" aria-hidden="true">CLAWBSTER</span>
+      <a class="nav-link" href="https://lu.ma/clawbster" target="_blank" rel="noopener noreferrer" aria-label="Join Clawbster on Luma (opens in new tab)">
+        Join
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       HERO
+       ========================================== -->
+  <main id="main-content">
+    <section class="hero container" aria-labelledby="hero-heading">
+      <!-- Mascot -->
+      <div class="hero-mascot-wrap">
+        <img src="../img/clawbster-mascot.png" alt="Clawbster mascot" class="mascot-img" aria-label="Clawbster mascot — a cute pixel art crab">
+        <div class="hero-mascot-shadow" aria-hidden="true"></div>
+      </div>
+
+      <h1 id="hero-heading">An AI builder collective.</h1>
+      <p class="hero-subtext">Meet IRL. Share the journey.</p>
+      <a class="btn-primary" href="https://lu.ma/clawbster" target="_blank" rel="noopener noreferrer" aria-label="Join the Colony on Luma (opens in new tab)">Join the Colony</a>
+    </section>
+
+    <!-- ==========================================
+         NUMBERED SECTIONS
+         ========================================== -->
+    <div class="sections container" aria-label="About Clawbster">
+
+      <section class="numbered-section" aria-labelledby="section-01-heading">
+        <span class="section-number" aria-hidden="true">01</span>
+        <p class="section-text" id="section-01-heading">We meet in <span class="highlight">real life</span> to get better at working with AI agents.</p>
+      </section>
+
+      <section class="numbered-section" aria-labelledby="section-02-heading">
+        <span class="section-number" aria-hidden="true">02</span>
+        <p class="section-text" id="section-02-heading">Build &middot; Meet &middot; Share &middot; Level up. Repeat.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer container">
+    <p>clawbst.er &middot; 2026</p>
+  </footer>
+
+</body>
+</html>
